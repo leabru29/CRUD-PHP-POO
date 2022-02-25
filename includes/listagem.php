@@ -32,7 +32,19 @@ foreach ($grupos as $grupo) {
 $resultados = strlen($resultados) ? $resultados : '<tr>
 												   		<td colspan="4" class="text-center">Nenhum grupo encontrado</td>
 												   </tr>';
+unset($_GET['status']);
+unset($_GET['pagina']);
 
+$gets = http_build_query($_GET);
+
+$paginacao = '';
+$pages = $obPaginacao->getPagina();
+foreach ($pages as $key => $pagina) {
+	$class = $pagina['atual'] ? 'btn-primary' : 'btn-light';
+	$paginacao .='<a href="?pagina='.$pagina['pagina'].'&'.$gets.'">
+					<button class="btn '.$class.'" type="button">'.$pagina['pagina'].'</button>
+				  </a>';
+}
 ?>
 <main>
 	<section><?=$mensagem?></section>
@@ -40,6 +52,25 @@ $resultados = strlen($resultados) ? $resultados : '<tr>
 		<a href="cadastrar.php">
 			<button class="btn btn-success mt-3">Novo</button>
 		</a>
+	</section>
+	<section>
+		<form method="GET">
+			<div class="row mt-6">
+				<div class="col-4">
+					<input type="text" placeholder="Digite o nome do grupo" name="busca" class="form-control" value="<?=$busca?>"/>
+				</div>
+				<div class="col-3">
+					<select class="form-select" name="filtroStatus">
+						<option value="" selected>Ativo/Inativo</option>
+						<option value="1" <?=$filtroStatus==1 ? 'selected' : ''?>>Ativo</option>
+						<option value="0" <?=$filtroStatus==0 ? 'selected' : ''?>>Inativo</option>
+					</select>
+				</div>
+				<div class="col-1 p-0">
+					<button type="submit" class="btn btn-primary">Buscar</button>
+				</div>
+			</div>
+		</form>
 	</section>
 	<section>
 		<table class="table bg-light mt-3 table-striped">
@@ -55,5 +86,8 @@ $resultados = strlen($resultados) ? $resultados : '<tr>
 				<?php echo $resultados; ?>
 			</tbody>
 		</table>
+	</section>
+	<section>
+		<?=$paginacao?>
 	</section>
 </main>

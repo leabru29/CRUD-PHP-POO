@@ -27,6 +27,12 @@ class grupoProduto{
 											  ->fetchAll(PDO::FETCH_CLASS,self::class);
 	}
 
+	public static function getQuantidadeGrupos($where = null, $order = null, $limit = null){
+		return (new Database('grupo_produto'))->select($where,$order,$limit,'COUNT(*) as qtd')
+											  ->fetchObject()
+											  ->qtd;
+	}
+
 	public function getGrupo($id){
 		return (new Database('grupo_produto'))->select('id = '.$id,null,null)->fetchObject(self::class);
 	}
