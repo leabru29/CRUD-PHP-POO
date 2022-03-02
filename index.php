@@ -1,7 +1,8 @@
 <?php 
 
 require __DIR__.'/vendor/autoload.php';
-
+use \App\Session\Login;
+Login::requerLogin();
 use \App\Entidades\grupoProduto;
 use \App\Db\Paginacao;
 
