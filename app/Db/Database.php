@@ -28,7 +28,7 @@ class Database{
 		try
 		{
 			$this->conexao = new PDO('mysql:host='.self::HOST.';dbname='.self::DB,self::USER,self::PASS);
-			$this->conexao->setAttribute(PDO::ATTR_ERRMODE,PDO_ERRMODE_EXCEPTION);
+			$this->conexao->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
 		}
 		catch(PDOException $e)
