@@ -21,11 +21,7 @@ if (!$obGrupo instanceof grupoProduto) {
 }
 
 if (isset($_POST['excluir-grupo'])) {
-
-	$obGrupo = new grupoProduto;
-
-	$obGrupo->id = $_GET[id];
-
+	
 	$obGrupo->excluir();
 
 	header("location:index.php?status=success");

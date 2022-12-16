@@ -81,7 +81,7 @@ class Database{
 
 	public function delete($where){
 		$query = 'DELETE FROM '.$this->tabela.' WHERE '.$where;
-		$this->execucao($query.array_values($where));
+		$this->execucao($query);
 		return true;
 	}
 

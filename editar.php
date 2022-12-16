@@ -24,7 +24,7 @@ if (isset($_POST['name-prod'],$_POST['statusProduto'])) {
 
 	$obGrupo = new grupoProduto;
 
-	$obGrupo->id = $_GET[id];
+	$obGrupo->id = $_GET['id'];
 	$obGrupo->name = $_POST['name-prod'];
 	$obGrupo->statusGrupo = $_POST['statusProduto'];
 

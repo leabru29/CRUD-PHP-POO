@@ -33,7 +33,7 @@ class grupoProduto{
 											  ->qtd;
 	}
 
-	public function getGrupo($id){
+	public static function getGrupo($id){
 		return (new Database('grupo_produto'))->select('id = '.$id,null,null)->fetchObject(self::class);
 	}
 
