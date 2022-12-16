@@ -22,7 +22,7 @@ $where = implode(' AND ',$condicoes);
 
 $quatidadesGrupos = grupoProduto::getQuantidadeGrupos($where);
 
-$obPaginacao = new Paginacao($quatidadesGrupos,$_GET['pagina'] ?? 1,2);
+$obPaginacao = new Paginacao($quatidadesGrupos,$_GET['pagina'] ?? 1,5);
 
 $grupos = grupoProduto::getGrupos($where,null,$obPaginacao->getLimite());
 
